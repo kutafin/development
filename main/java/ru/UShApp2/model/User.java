@@ -1,22 +1,19 @@
-package ru.UShApp2.model;
+package ru.springapp.model;
 
 import javax.persistence.*;
 import java.util.Set;
-
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idUser;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "username")
     private String username;
-
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "password")
     private String password;
@@ -29,28 +26,31 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public Integer getIdUser() {
-        return idUser;
+    public User() {
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+
+    public User(String username, String password, String confirmPassword, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.roles = roles;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
@@ -75,5 +75,16 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }
