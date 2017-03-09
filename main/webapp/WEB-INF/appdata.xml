@@ -50,7 +50,9 @@
     </property>
 </bean>
 
-
+    <bean id="ShUrlDao" class="ru.springapp.dao.ShUrlDaoImpl">
+        <property name="sessionFactory" ref="hibernate4SessionFactory"/>
+    </bean>
     <bean id="TagDao" class="ru.springapp.dao.TagDaoImpl">
         <property name="sessionFactory" ref="hibernate4SessionFactory"/>
     </bean>
