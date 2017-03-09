@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.springapp.model.ShUrl;
 import org.hibernate.Criteria;
+import ru.springapp.model.Tag;
 
 
 import java.util.List;
@@ -17,10 +18,14 @@ public class ShUrlDaoImpl implements ShUrlDao  {
 
     private static final Logger logger = LoggerFactory.getLogger(ShUrlDaoImpl.class);
 
-    private SessionFactory sessionFactory;
+    SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    public Session getSession(){
+        return sessionFactory.getCurrentSession() ;
     }
 
     @Override
@@ -50,28 +55,30 @@ public class ShUrlDaoImpl implements ShUrlDao  {
     }
 
     @Override
-    public ShUrl getUrlById(int idUrl) {
-        Session session=this.sessionFactory.getCurrentSession();
-        ShUrl shUrl = (ShUrl) session.load(ShUrl.class, new Integer(idUrl));
-        logger.info("Shorturl"+shUrl +"successfully loaded");
+    public ShUrl findUrlByName(String url) {
+        Criteria cr = getSession().createCriteria(Tag.class,"shorturl");
+        cr.createAlias("shorturl.tag","tag");
+        cr.add(Restrictions.like("url",url));
 
-        return shUrl;
+        return(ShUrl) cr.uniqueResult();
     }
+
+    @Override
+        public ShUrl findUrlById(int idUrl) {
+return (ShUrl) getSession().get(ShUrl.class,idUrl);
+    }
+
 
     @Override
     @SuppressWarnings(value = "uncheked")
     public List<ShUrl> listUrl() {
-        Criteria cr = getSession().createCriteria(this.getClass());
-
-        return (List<ShUrl>)cr.list();
+        Session session = this.sessionFactory.getCurrentSession();
+        List<ShUrl> urlList = session.createQuery("from ru.springapp.model.ShUrl").list();
+        return urlList;
     }
 
 
-    Session session;
 
-    public Session getSession() {
-        return session;
-    }
 
     @Override
     @SuppressWarnings("uncheked")
@@ -94,11 +101,9 @@ public class ShUrlDaoImpl implements ShUrlDao  {
     }
 
     @Override
-    @SuppressWarnings("uncheked")
     public List<ShUrl> findByTag(int idTag) {
-        Criteria cr = getSession()
-                .createCriteria(ShUrl.class, "shorturl")
-                .add(Restrictions.eq("tag.idTag", idTag));
+        Criteria cr = getSession().createCriteria(ShUrl.class,"shorturl")
+                .add(Restrictions.eq("tag.idTag",idTag));
         return cr.list();
     }
 
