@@ -2,6 +2,7 @@ package ru.springapp.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.springapp.dao.ShUrlDao;
@@ -13,7 +14,8 @@ import java.util.List;
 public class ShUrlServiceImpl implements ShUrlService {
 
     @Autowired
-    private ShUrlDao shUrlDao;
+    @Qualifier("ShUrlDao")
+        private ShUrlDao shUrlDao;
 
         @Override
         public void createUrl(ShUrl shUrl) {
@@ -34,9 +36,16 @@ public class ShUrlServiceImpl implements ShUrlService {
     }
 
     @Override
-        public ShUrl getUrlById(int idUrl) {
-        return this.shUrlDao.getUrlById(idUrl);
+    public ShUrl getUrlById(int idUrl) {
+
+            return this.shUrlDao.findUrlById(idUrl);
     }
+
+    @Override
+    public ShUrl getUrlByName(int idTag) {
+        return null;
+    }
+
 
     @Override
         public List<ShUrl> getUrls() {
@@ -58,10 +67,6 @@ public class ShUrlServiceImpl implements ShUrlService {
         return shUrls;
     }
 
-    @Override
-        public List<ShUrl> getUrlByTag(int idTag) {
-        List<ShUrl> shUrls = shUrlDao.findByTag(idTag);
-        return shUrls;
-    }
+
 
 }
