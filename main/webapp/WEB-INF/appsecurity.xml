@@ -8,6 +8,8 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
+	<intercept-url pattern="/tags" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+	<intercept-url pattern="/byTag" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/shortu" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/main" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
