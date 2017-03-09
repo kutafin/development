@@ -46,7 +46,8 @@ public class ShUrl {
     public ShUrl() {
     }
 
-    public ShUrl(String url, String shortUrl, String description, int views, User user, Tag tag) {
+    public ShUrl(int idUrl, String url, String shortUrl, String description, int views, User user, Tag tag) {
+        this.idUrl = idUrl;
         this.url = url;
         this.shortUrl = this.shortUrl;
         this.description = description;
@@ -72,11 +73,11 @@ public class ShUrl {
     }
 
     public String getShortUrl() {
-        return "http://localhost:8080/"+String.valueOf(idUrl);
+        return "USh/"+String.valueOf(idUrl);
     }
 
     public void setShortUrl(String shortUrl) {
-        String s=shortUrl.replaceAll("http://localhost:8080/","");
+        String s=shortUrl.replaceAll("Ush/","");
         this.shortUrl = s;
     }
 
