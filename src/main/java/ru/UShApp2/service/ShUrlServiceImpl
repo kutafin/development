@@ -67,6 +67,4 @@ public class ShUrlServiceImpl implements ShUrlService {
         return shUrls;
     }
 
-
-
 }
