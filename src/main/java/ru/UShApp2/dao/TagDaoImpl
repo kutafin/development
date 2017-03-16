@@ -17,11 +17,7 @@ public class TagDaoImpl implements TagDao {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public void save(Tag tag) {
-        Session session = this.sessionFactory.getCurrentSession();
-        session.save(tag);
-    }
+
     @Override
     @SuppressWarnings(value = "uncheked")
     public List<Tag> listTag() {
@@ -38,8 +34,15 @@ public class TagDaoImpl implements TagDao {
     }
 
     @Override
+    @SuppressWarnings("uncheked")
+    public Tag save(Tag tag) {
+        return(Tag) getSession().save(tag);
+    }
+
+    @Override
     public Tag findById(int idTag) {
-        Criteria cr = getSession().createCriteria(Tag.class, "tag")
+        Criteria cr = getSession()
+                .createCriteria(Tag.class, "Tag")
                 .add(Restrictions.eq("idTag", "idTag"));
         return (Tag) cr.uniqueResult();
     }
@@ -47,10 +50,8 @@ public class TagDaoImpl implements TagDao {
     @Override
     public Tag findByName(String tagname) {
         Criteria cr = getSession()
-                .createCriteria(Tag.class, "tag")
+                .createCriteria(Tag.class, tagname)
                 .add(Restrictions.like("tagname", tagname));
         return (Tag) cr.uniqueResult();
     }
-
-
 }
