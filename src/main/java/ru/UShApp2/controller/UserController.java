@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -92,25 +92,34 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
     public String main(@ModelAttribute("shorturl") ShUrl shUrl, Model model) {
+        model.addAttribute("shUrl",new ShUrl());
+        model.addAttribute("tag",new Tag());
+        model.addAttribute("user", this.securityService.findLoggedInUsername());
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String Username = userDetails.getUsername();
         List<ShUrl> shUrls = this.shUrlService.getUrlByUsername(Username);
-        model.addAttribute("shUrl",shUrls);
+        model.addAttribute("shUrls",shUrls);
         return "/main";
     }
 
 
     @RequestMapping(value = "main/add",method = RequestMethod.POST)
     public String createUrl(@ModelAttribute("shUrl") ShUrl shUrl){
-        Tag tag = shUrl.getTag();
         User user = shUrl.getUser();
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String Username1 = userDetails.getUsername();
+        String Password1 = userDetails.getPassword();
+        user.setUsername(Username1);
+        user.setPassword(Password1);
+        User user1 = this.userService.findByUsername(Username1);
+        shUrl.setUser(user1);
         if (shUrl.getIdUrl()==0){
             this.shUrlService.createUrl(shUrl);
-        }else {
+                    }else {
             this.shUrlService.updateUrl(shUrl);
-        }
+                    }
 
-        return "redirect:/main";
+        return "redirect:/main" ;
     }
 
     @RequestMapping(value = "remove/{idUrl}")
