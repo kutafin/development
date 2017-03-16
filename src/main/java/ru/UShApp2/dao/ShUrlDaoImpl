@@ -1,6 +1,7 @@
 package ru.springapp.dao;
 
 
+import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -30,9 +31,10 @@ public class ShUrlDaoImpl implements ShUrlDao  {
 
     @Override
         public void createUrl(ShUrl shUrl) {
-        Session session=this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         session.save(shUrl);
-        logger.info("Shorturl"+shUrl +"saved");
+        session.save(shUrl.getTag());
+
     }
 
     @Override
@@ -40,18 +42,19 @@ public class ShUrlDaoImpl implements ShUrlDao  {
         Session session=this.sessionFactory.getCurrentSession();
         ShUrl updateShUrl=(ShUrl) session.get(ShUrl.class, shUrl.getIdUrl());
         updateShUrl.setDescription(shUrl.getDescription());
+        updateShUrl.setTag(shUrl.getTag());
         session.saveOrUpdate(updateShUrl);
         logger.info("Shorturl"+shUrl +"successfully update");
     }
 
     @Override
     public void removeUrl(int idUrl) {
-      Session session=this.sessionFactory.getCurrentSession();
-      ShUrl shUrl = (ShUrl) session.load(ShUrl.class, new Integer(idUrl));
-    if (shUrl!=null){
-        session.delete(shUrl);
-    }
-        logger.info("Shorturl"+shUrl +"successfully remove");
+      Session session = this.sessionFactory.getCurrentSession();
+      ShUrl shUrl = (ShUrl) session.load(ShUrl.class,new Integer(idUrl));
+        if(shUrl!=null){
+            session.delete(shUrl);
+        }
+
     }
 
     @Override
@@ -64,8 +67,8 @@ public class ShUrlDaoImpl implements ShUrlDao  {
     }
 
     @Override
-        public ShUrl findUrlById(int idUrl) {
-return (ShUrl) getSession().get(ShUrl.class,idUrl);
+        public ShUrl findUrlById(int idUrl){
+        return (ShUrl) getSession().get(ShUrl.class,idUrl);
     }
 
 
