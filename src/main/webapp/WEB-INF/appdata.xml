@@ -19,7 +19,7 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="ru.springapp.model"/>
+        <property name="packagesToScan" value="ru.UShApp2.model"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -36,10 +36,10 @@
     <property name="dataSource" ref="dataSource"/>
     <property name="annotatedClasses">
         <list>
-            <value>ru.springapp.model.ShUrl</value>
-            <value>ru.springapp.model.Tag</value>
-            <value>ru.springapp.model.User</value>
-            <value>ru.springapp.model.Role</value>
+            <value>ru.UShApp2.model.ShUrl</value>
+            <value>ru.UShApp2.model.Tag</value>
+            <value>ru.UShApp2.model.User</value>
+            <value>ru.UShApp2.model.Role</value>
                    </list>
     </property>
     <property name="hibernateProperties">
@@ -50,10 +50,10 @@
     </property>
 </bean>
 
-    <bean id="ShUrlDao" class="ru.springapp.dao.ShUrlDaoImpl">
+    <bean id="ShUrlDao" class="ru.UShApp2.dao.ShUrlDaoImpl">
         <property name="sessionFactory" ref="hibernate4SessionFactory"/>
     </bean>
-    <bean id="TagDao" class="ru.springapp.dao.TagDaoImpl">
+    <bean id="TagDao" class="ru.UShApp2.dao.TagDaoImpl">
         <property name="sessionFactory" ref="hibernate4SessionFactory"/>
     </bean>
 
@@ -64,5 +64,5 @@
 
     <tx:annotation-driven/>
 
-    <jpa:repositories base-package="ru.springapp.dao"/>
+    <jpa:repositories base-package="ru.UShApp2.dao"/>
 </beans>
