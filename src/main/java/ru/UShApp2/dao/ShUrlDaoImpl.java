@@ -1,4 +1,4 @@
-package ru.springapp.dao;
+package ru.UShApp2.dao;
 
 
 import org.hibernate.NonUniqueObjectException;
@@ -8,9 +8,9 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import ru.springapp.model.ShUrl;
+import ru.UShApp2.model.ShUrl;
 import org.hibernate.Criteria;
-import ru.springapp.model.Tag;
+import ru.UShApp2.model.Tag;
 
 
 import java.util.List;

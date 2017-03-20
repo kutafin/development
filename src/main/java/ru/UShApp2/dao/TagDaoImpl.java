@@ -1,10 +1,10 @@
-package ru.springapp.dao;
+package ru.UShApp2.dao;
 
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import ru.springapp.model.Tag;
+import ru.UShApp2.model.Tag;
 import org.hibernate.Criteria;
 
 import java.util.List;

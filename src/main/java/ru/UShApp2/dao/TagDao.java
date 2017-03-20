@@ -1,6 +1,6 @@
-package ru.springapp.dao;
+package ru.UShApp2.dao;
 
-import ru.springapp.model.Tag;
+import ru.UShApp2.model.Tag;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.springapp.service;
+package ru.UShApp2.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

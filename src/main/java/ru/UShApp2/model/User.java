@@ -1,4 +1,4 @@
-package ru.springapp.model;
+package ru.UShApp2.model;
 
 import javax.persistence.*;
 import java.util.Set;

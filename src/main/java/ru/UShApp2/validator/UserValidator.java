@@ -1,7 +1,7 @@
-package ru.springapp.validator;
+package ru.UShApp2.validator;
 
-import ru.springapp.model.User;
-import ru.springapp.service.UserService;
+import ru.UShApp2.model.User;
+import ru.UShApp2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

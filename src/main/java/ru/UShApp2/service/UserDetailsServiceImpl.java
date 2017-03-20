@@ -1,8 +1,8 @@
-package ru.springapp.service;
+package ru.UShApp2.service;
 
-import ru.springapp.dao.UserDao;
-import ru.springapp.model.Role;
-import ru.springapp.model.User;
+import ru.UShApp2.dao.UserDao;
+import ru.UShApp2.model.Role;
+import ru.UShApp2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

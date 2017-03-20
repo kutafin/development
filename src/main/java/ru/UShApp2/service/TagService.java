@@ -1,6 +1,6 @@
-package ru.springapp.service;
+package ru.UShApp2.service;
 
-import ru.springapp.model.Tag;
+import ru.UShApp2.model.Tag;
 
 import java.util.List;
 

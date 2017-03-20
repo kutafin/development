@@ -1,12 +1,12 @@
-package ru.springapp.service;
+package ru.UShApp2.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.springapp.dao.ShUrlDao;
-import ru.springapp.model.ShUrl;
+import ru.UShApp2.dao.ShUrlDao;
+import ru.UShApp2.model.ShUrl;
 
 import java.util.List;
 @Service

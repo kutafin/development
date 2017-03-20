@@ -1,6 +1,6 @@
-package ru.springapp.dao;
+package ru.UShApp2.dao;
 
-import ru.springapp.model.ShUrl;
+import ru.UShApp2.model.ShUrl;
 
 import java.util.List;
 

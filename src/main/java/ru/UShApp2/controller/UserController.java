@@ -1,16 +1,16 @@
-package ru.springapp.controller;
+package ru.UShApp2.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PathVariable;
-import ru.springapp.model.ShUrl;
-import ru.springapp.model.Tag;
-import ru.springapp.model.User;
-import ru.springapp.service.SecurityService;
-import ru.springapp.service.ShUrlService;
-import ru.springapp.service.TagService;
-import ru.springapp.service.UserService;
-import ru.springapp.validator.UserValidator;
+import ru.UShApp2.model.ShUrl;
+import ru.UShApp2.model.Tag;
+import ru.UShApp2.model.User;
+import ru.UShApp2.service.SecurityService;
+import ru.UShApp2.service.ShUrlService;
+import ru.UShApp2.service.TagService;
+import ru.UShApp2.service.UserService;
+import ru.UShApp2.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

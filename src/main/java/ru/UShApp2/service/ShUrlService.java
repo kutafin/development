@@ -1,6 +1,6 @@
-package ru.springapp.service;
+package ru.UShApp2.service;
 
-        import ru.springapp.model.ShUrl;
+        import ru.UShApp2.model.ShUrl;
 
         import java.util.List;
 
