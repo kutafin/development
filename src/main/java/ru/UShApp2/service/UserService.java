@@ -1,7 +1,6 @@
-package ru.UShApp2.service;
+package ru.springapp.service;
 
-import ru.UShApp2.model.User;
-
+import ru.springapp.model.User;
 
 public interface UserService {
 

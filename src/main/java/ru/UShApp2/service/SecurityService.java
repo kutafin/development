@@ -1,6 +1,4 @@
-package ru.UShApp2.service;
-
-
+package ru.springapp.service;
 
 public interface SecurityService {
 

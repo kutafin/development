@@ -8,8 +8,6 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
-	<intercept-url pattern="/tags" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-	<intercept-url pattern="/byTag" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/shortu" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/main" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
@@ -26,7 +24,7 @@
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
-                class="ru.springapp.service.UserDetailsServiceImpl"></beans:bean>
+                class="ru.UShApp2.service.UserDetailsServiceImpl"></beans:bean>
 
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

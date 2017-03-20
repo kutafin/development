@@ -11,7 +11,7 @@
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>classpath:validation.properties</value>
+                <value>classpath:validation</value>
             </list>
         </property>
     </bean>

@@ -21,7 +21,7 @@
         <tr>
             <th> ${shUrl.url}</th>
             <th> ${shUrl.tag.tagname}</th>
-            <th><a href="http://${shUrl.url}">
+            <th><a href="http://${shUrl.url}" target="_blank">
                 <label>${shUrl.shortUrl}</label> </a></th>
             <th><a href="<c:url value="/shortu${shUrl.idUrl}" /> ">
                 <label>Подробнее</label></a>

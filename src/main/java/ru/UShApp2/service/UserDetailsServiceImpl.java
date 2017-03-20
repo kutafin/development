@@ -1,8 +1,8 @@
-package ru.UShApp2.service;
+package ru.springapp.service;
 
-import ru.UShApp2.dao.UserDao;
-import ru.UShApp2.model.Role;
-import ru.UShApp2.model.User;
+import ru.springapp.dao.UserDao;
+import ru.springapp.model.Role;
+import ru.springapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 
 public class UserDetailsServiceImpl implements UserDetailsService {

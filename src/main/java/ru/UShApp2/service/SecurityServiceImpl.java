@@ -1,4 +1,4 @@
-package ru.UShApp2.service;
+package ru.springapp.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,16 +11,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
-
-    @Autowired
+@Autowired
     private AuthenticationManager authenticationManager;
-
-    @Autowired
+@Autowired
     private UserDetailsService userDetailsService;
 
     @Override
@@ -44,7 +41,7 @@ public class SecurityServiceImpl implements SecurityService {
         if (authenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-            logger.debug(String.format("Автологин", username));
+            logger.debug(String.format("Successfully %s auto logged in", username));
         }
     }
 }

@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="net.proselyte.UShApp2">
+    <logger name="net.proselyte.springapp">
         <level value="debug"/>
     </logger>
 

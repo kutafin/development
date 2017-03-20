@@ -1,6 +1,6 @@
-package ru.UShApp2.dao;
+package ru.springapp.dao;
 
-import ru.UShApp2.model.Role;
+import ru.springapp.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleDao extends JpaRepository<Role, Long> {
