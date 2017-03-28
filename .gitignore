@@ -1,7 +1,8 @@
 .idea/*
 *.class
 target/*
-
+main/*
+IdeaProjects/*
 /.war
 /.ear
 #/.jar
